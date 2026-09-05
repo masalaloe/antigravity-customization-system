@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "gemini-api-docs": {
+      "serverUrl": "https://gemini-api-docs-mcp.dev",
+      "tools": {
+        "gemini_search_docs": {
+          "eager": true
+        },
+        "gemini_get_doc": {
+          "eager": true
+        }
+      }
+    },
+    "example-stdio-server": {
+      "_comment": "Example local stdio MCP server (disabled by default)",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./"],
+      "env": {}
+    }
+  }
+}
