@@ -31,3 +31,14 @@ Apply planning mode for any task involving significant architecture changes, mul
 * **Clickable Links**: Link to files, folders, and symbols using GitHub-style markdown links with the `file://` URI scheme and forward slashes (e.g. `[main.py](file:///path/to/main.py#L10-L25)`).
 * **Mathematics**: Render LaTeX math via KaTeX. Escape literal currency signs (`\$`) to prevent inadvertent LaTeX parsing.
 * **Proactive Next Steps**: End responses with clear, actionable follow-ups or verification instructions.
+
+---
+
+## 4. Git & Version Control Protocol: Guarded Auto-Commit
+
+* **Detect Git First**: Before attempting Git operations, check if the workspace is a valid Git repository (`git rev-parse --is-inside-work-tree`).
+* **Non-Git Workspaces**: If the workspace is not a Git repository, skip all Git steps gracefully. **Never** execute `git init` unless explicitly requested.
+* **Auto-Commit on Completion**: If inside a Git repository, once the approved plan has been executed and verified:
+  * **Atomic Staging**: Stage only the specific modified/created files related to the task (`git add <files>`).
+  * **Conventional Message**: Create an atomic commit with a clear, descriptive message (e.g., `feat:`, `fix:`, `docs:`, `refactor:`).
+* **Never Auto-Push**: **Never** execute `git push` to remote repositories automatically. Pushing remains strictly under user control.
