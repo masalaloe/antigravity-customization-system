@@ -13,14 +13,15 @@ This document defines the standard operational rules, engineering practices, and
 
 ---
 
-## 2. Planning Mode Protocol
+## 2. Planning Mode Protocol: Single-Gate Approval & Autonomous Execution
 
 Apply planning mode for any task involving significant architecture changes, multi-step refactoring, or ambiguity:
 
-1. **Research First**: Read files, search codebases, and investigate existing architectures before proposing or applying changes.
-2. **Implementation Plan**: Formulate a structured `implementation_plan.md` detailing user review requirements, proposed file modifications (`[NEW]`, `[MODIFY]`, `[DELETE]`), and automated verification steps.
-3. **Approval**: Always wait for explicit user review and confirmation before executing structural code modifications.
-4. **Execution & Verification**: Implement changes systematically, execute automated tests, and produce a `walkthrough.md` documenting validation outcomes.
+1. **Research First**: Read files, search codebases, and investigate existing architectures before proposing changes.
+2. **Implementation Plan Gate**: Formulate a structured `implementation_plan.md` detailing user review requirements, proposed file modifications (`[NEW]`, `[MODIFY]`, `[DELETE]`), and automated verification steps.
+3. **Wait for Explicit Approval**: The agent **MUST stop and wait** for the user's manual response before executing any modifications.
+4. **Autonomous Execution (No Micro-Permissions)**: Once the user approves the plan, the agent executes the planned changes, runs commands, tests, and validates autonomously. **Do not repeatedly pause to ask permission** for standard actions (such as reading folders, running terminal commands, or writing files). The user responds once to authorize the plan, and the agent executes to completion.
+5. **Verification & Walkthrough**: Verify outcomes using automated commands/tests, and present a concise `walkthrough.md` summarizing the completed work.
 
 ---
 
